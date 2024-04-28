@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+import sys
 
 app = Flask(__name__)
 
@@ -7,11 +8,4 @@ def greetings():
     return jsonify({"greeting": "Hello from Python App!"})
 
 if __name__ == '__main__':
-
-    if len(sys.argv) > 1:
-        port = int(sys.argv[1])
-    else:
-        # Default port
-        port = 3000
-
-    app.run(host="0.0.0.0", debug=True, port=port)
+    app.run(host="0.0.0.0", debug=True, port="3000")
