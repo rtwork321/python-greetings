@@ -1,5 +1,5 @@
-import os
 from flask import Flask, jsonify
+import argparse
 
 app = Flask(__name__)
 
@@ -8,6 +8,7 @@ def greetings():
     return jsonify({"greeting": "Hello from Python App!"})
 
 if __name__ == '__main__':
-    # Use the port specified in the environment variable or default to 3000
-    port = int(os.getenv('PORT', 3000))
-    app.run(host="0.0.0.0", debug=True, port=port)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--port')
+    args = parser.parse_args()
+    app.run(host="0.0.0.0", debug=True, port=args.port)
